@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 
-
 public class CustomerFormController {
 
     CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getTypes(BOFactory.BOTypes.Customer);
