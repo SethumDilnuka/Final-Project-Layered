@@ -18,7 +18,7 @@
         <Hyperlink fx:id="hyperfp" layoutX="668.0" layoutY="430.0" onAction="#hlinkForgotPassword" textFill="WHITE" />
         <ImageView fitHeight="742.0" fitWidth="1174.0" layoutX="-10.0" layoutY="-14.0">
             <image>
-                <Image url="@../../../../../final project/finalproject/src/main/resources/assests/img/MacBook_Air_-_4png.png" />
+                <Image url="@../assests/img/MacBook_Air_-_4png.png" />
             </image>
         </ImageView>
         <Pane layoutX="393.0" layoutY="77.0" prefHeight="540.0" prefWidth="386.0" style="-fx-background-color: tranparent; -fx-background-radius: 30px; -fx-border-color: black; -fx-border-radius: 30px; -fx-border-width: 2;" styleClass="pane" stylesheets="@../../../../../../Documents/TeaCollection/src/main/resources/css/Colorgradient.css">

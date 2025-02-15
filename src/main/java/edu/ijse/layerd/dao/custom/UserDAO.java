@@ -10,4 +10,6 @@ public interface UserDAO extends CrudDAO<User> {
     boolean updatepass(String username, String text) throws SQLException, ClassNotFoundException;
 
     UserDto getemail(String username) throws SQLException;
+
+    boolean verifyCredentials(String text, String text1);
 }

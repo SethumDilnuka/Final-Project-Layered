@@ -1,6 +1,8 @@
 package edu.ijse.layerd.controller;
 
 import com.jfoenix.controls.JFXButton;
+import edu.ijse.layerd.bo.BOFactory;
+import edu.ijse.layerd.bo.custom.UserBO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,7 +80,7 @@ public class LoginPageFormController {
     @FXML
     private TextField txtTblName;
 
-
+UserBO userBO = (UserBO) BOFactory.getBoFactory().getTypes(BOFactory.BOTypes.USER);
     @FXML
     private PasswordField txtPassword;
 
@@ -121,26 +123,31 @@ public class LoginPageFormController {
     }
 
     public void btnOnActionLogin(ActionEvent actionEvent) throws IOException {
-       // this.actionEvent = actionEvent;
-//        AncLogin.getChildren().clear();
-//        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"));
-//        AncLogin.getChildren().add(load);
-        /*if (UserModel.verifyCredentials(usernametxt.getText(),passwordfield1.getText())){
+        System.out.println("loginnnn");
+        //this.actionEvent = actionEvent;
+        // AncLogin.getChildren().clear();
+        // AnchorPane load = FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"));
+        // AncLogin.getChildren().add(load);
+        if (userBO.verifyCredentials(usernametxt.getText(), passwordfield1.getText())) {
+            System.out.println("login");
             try {
-                Navigation.switchNavigation("dashboardForm.fxml",actionEvent);
+                Navigation.switchNavigation("dashboardForm.fxml", actionEvent);
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
-        }*/
-    //Navigation.switchNavigation("dashboardForm.fxml",actionEvent);
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) txtBookiId.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Login Form");
+        } else {
+            System.out.println("failed");
+        }
+        //Navigation.switchNavigation("dashboardForm.fxml",actionEvent);
+//        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"));
+//
+//        Scene scene = new Scene(rootNode);
+//
+//        Stage stage = (Stage) txtBookiId.getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.centerOnScreen();
+//        stage.setTitle("Login Form");
     }
 
     public void hyperCreateAccOnAction(ActionEvent actionEvent) {

@@ -18,4 +18,9 @@ public class UserBOimpl implements UserBO {
     public UserDto getEmail(String username) throws SQLException {
         return userDAO.getemail(username);
     }
+
+    @Override
+    public boolean verifyCredentials(String text, String text1) {
+        return userDAO.verifyCredentials(text,text1);
+    }
 }

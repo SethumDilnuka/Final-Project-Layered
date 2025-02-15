@@ -12,7 +12,7 @@ public class AppInitializer extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-       Parent rootNode = FXMLLoader.load(getClass().getResource("/view/itemForm.fxml"));
+       Parent rootNode = FXMLLoader.load(getClass().getResource("/view/loginPageForm.fxml"));
         //Parent rootNode = FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"));
         Scene scene = new Scene(rootNode);
         stage.setScene(scene);

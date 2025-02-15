@@ -62,4 +62,28 @@ public class UserDAOimpl implements UserDAO {
             throwables.printStackTrace();
         }
         return null;    }
+
+    @Override
+    public boolean verifyCredentials(String text, String text1) {
+        try {
+            DbConnection instance = DbConnection.getInstance();
+            Connection connection = instance.getConnection();
+
+            String sql = "SELECT password FROM user WHERE username = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1,text);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()){
+                if (text1.equals(resultSet.getString(1))){
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+        }
 }
