@@ -203,9 +203,8 @@ public class CustomerFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws ClassNotFoundException {
-        if(txtId.getText().isEmpty() || txtAddress.getText().isEmpty()|| txtName.getText().isEmpty()||txtMobile.getText().isEmpty() ||txtEmail.getText().isEmpty()||pickerDate.getValue() == null){
-            new Alert(Alert.AlertType.ERROR,"please fill all empty fileds before add new customer !").show();
-        }else {
+
+        try {
             String id = txtId.getText();
             String name = txtName.getText();
             String address = txtAddress.getText();
@@ -213,52 +212,15 @@ public class CustomerFormController {
             String mobile = txtMobile.getText();
             String dob = String.valueOf(pickerDate.getValue());
             CustomerDto dto = new CustomerDto(id,name,address,email,mobile,dob);
-              ///////////////////////////////////////////////////////////////////////////// *//*
-            if(DataValidateController.customerIdValidate(txtId.getText())){
-                customerIdValiidate.setText("");
-
-                if (DataValidateController.customerNameValidate(txtName.getText())) {
-                    customerNameValiidate.setText("");
-
-                    if (DataValidateController.addressValidate(txtAddress.getText())){
-                        customerAddressValiidate.setText("");
-
-                        if(DataValidateController.contactCheck(txtMobile.getText())){
-                            customerMobileValiidate.setText("");
-
-                            if(DataValidateController.emailCheck(txtEmail.getText())){
-                                customerEmailValiidate.setText("");
-                                try {
-                                boolean isSaved =  customerBO.saveCustomer(dto);
-                                if(isSaved){
-                                    new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
-                                    loadAllCustomers();
-                                }
-                            } catch (SQLException e) {
-                                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-                            }
-                            }else {
-                                customerEmailValiidate.setText("Invalid Email");
-                            }
-
-
-                        }else {
-                            customerMobileValiidate.setText("Invalid tel.Include 10 charcters !");
-                        }
-
-                    }else {
-                        customerAddressValiidate.setText("Include atleast 4 characters !");
-                    }
-
-                }else{
-                    customerNameValiidate.setText("Include atleast 4 characters !");
-                }
-
-            }else {
-                customerIdValiidate.setText("Invalid customer Id !");
+            boolean isSaved =  customerBO.saveCustomer(dto);
+            if(isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
+                loadAllCustomers();
             }
-
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+
     }
 
     @FXML

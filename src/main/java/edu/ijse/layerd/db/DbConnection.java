@@ -12,7 +12,7 @@ import java.sql.SQLException;
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/fruityFizz",
                 "root",
-                "12345678"
+                "1234"
         );
     }
     public static DbConnection getInstance() throws SQLException {
